@@ -16,7 +16,7 @@ public class Worker : BackgroundService
     {
         var mqttFactory = new MqttFactory();
         var mqttClient = mqttFactory.CreateMqttClient();
-        var mqttConnectionString = Environment.GetEnvironmentVariable("MQTTHost") ?? "vernmq";
+        var mqttConnectionString = Environment.GetEnvironmentVariable("MQTTHost") ?? "vernemq";
         await mqttClient.ConnectAsync(new MqttClientOptionsBuilder()
                                 .WithTcpServer(mqttConnectionString)
                                 .WithNoKeepAlive()

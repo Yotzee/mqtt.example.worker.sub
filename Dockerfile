@@ -18,6 +18,7 @@ FROM build AS publish
 RUN dotnet publish "MQTT.SUB.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
+ENV MQTTHost vernemq
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "MQTT.SUB.dll"]
